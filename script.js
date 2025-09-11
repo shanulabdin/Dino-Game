@@ -27,3 +27,13 @@ let checkDead = setInterval(function(){
     alert('u lose')
   }
 }, 10)
+
+document.addEventListener('keydown', function(key){
+  if(key.code === 'Space'){
+    jump();
+  }
+});
+
+document.addEventListener('click', function(){
+  jump();
+})
