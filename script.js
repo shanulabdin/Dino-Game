@@ -14,3 +14,16 @@ function jump(){
     }, 500);
   }
 }
+
+let checkDead = setInterval(function(){
+  let characterTop = parseInt(window
+    .getComputedStyle(character)
+    .getPropertyValue('top'));
+
+  let blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue('left'));
+
+  if(blockLeft > 0 && blockLeft < 20 && characterTop >= 130){
+    block.style.animation = 'none';
+    alert('u lose')
+  }
+}, 10)
