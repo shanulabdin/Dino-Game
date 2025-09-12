@@ -17,13 +17,12 @@ body{
   border: 1px solid black;
 }
 
-#character{
+#dino{
   width: 20px;
   height: 50px;
   background-color: lightpink;
   position: relative;
   top: 150px;
-  left: 50px;
 }
 .animate{
   animation: jump 500ms; 
@@ -35,8 +34,7 @@ body{
   100%{top: 150px}
 }
 
-
-#block{
+#cactus{
   width: 20px;
   height: 20px;
   background-color: lightgreen;
@@ -47,5 +45,5 @@ body{
 }
 @keyframes block {
   0%{left: 480px;}
-  100%{left: -40px;}
+  100%{left: -100px;}
 }
