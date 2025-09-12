@@ -1,33 +1,21 @@
+let game = document.getElementById('game');
 let dino = document.getElementById('dino');
-let cactus = document.getElementById('cactus');
 
 let isJumping = false;
+let isGameOver = false;
+
 
 function jump(){
-  if(!isJumping){
-    isJumping = true;
-    dino.classList.add('animate');
-
-    
-    setTimeout(function(){
-      dino.classList.remove('animate');
-      isJumping = false;
-    }, 500)
-  }
-}
-
-
-
-let isDead = setInterval(function(){
-  let dinoTop = parseInt(window.getComputedStyle(dino).getPropertyValue('top'));
-
-  let cactusLeft = parseInt(window.getComputedStyle(cactus).getPropertyValue('left'));
+  if(isJumping || isGameOver) return;
   
-  if(cactusLeft > 0 && cactusLeft < 20 && dinoTop >= 130){
-    cactus.style.animation = 'none';
-    alert('You Lose');
-  }
-}, 10);
+  isJumping = true;
+  dino.classList.add('animate');
+
+  setTimeout(function(){
+    dino.classList.remove('animate');
+    isJumping = false;
+  }, 300)
+}
 
 document.addEventListener('click', function(){
   jump();
@@ -35,3 +23,64 @@ document.addEventListener('click', function(){
 document.addEventListener('keydown', function(){
   jump();
 })
+
+function isCollision(dino, cactus){
+  const dinoBox = dino.getBoundingClientRect();
+  const cactusBox = cactus.getBoundingClientRect();
+
+  return !(
+    dinoBox.bottom < cactusBox.top ||
+    dinoBox.top > cactusBox.bottom ||
+    dinoBox.right < cactusBox.left ||
+    dinoBox.left > cactusBox.right
+  );
+}
+
+const GAME_WIDTH = game.clientWidth;
+
+function createCactus(){
+  if (isGameOver) return;
+
+  const cactus = document.createElement('div');
+  cactus.className = 'cactus';
+  cactus.style.left = GAME_WIDTH + 'px';
+
+  game.appendChild(cactus);
+
+  const speed = 9;
+
+  function move() {
+    if (isGameOver) {
+      if (cactus.parentNone) cactus.parentNode.removeChild(cactus);
+      return;
+    }
+    let left = parseFloat(cactus.style.left);
+    left -= speed;
+    cactus.style.left = left + 'px';
+
+    if (isCollision(dino, cactus)){
+      gameOver();
+      return;
+    }
+
+    if(left < -50) {
+      if(cactus.parentNode) cactus.parentNode.removeChild(cactus);
+      return;
+    }
+
+    requestAnimationFrame(move);
+  }
+  requestAnimationFrame(move);
+
+  const min = 500;
+  const max = 1200;
+  const delay = Math.random() * (max - min) + min;
+  setTimeout(createCactus, delay);
+}
+
+createCactus();
+
+function gameOver() {
+  isGameOver = true;
+  alert('game Over!')
+}
