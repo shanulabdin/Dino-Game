@@ -53,18 +53,18 @@ body{
   left: 0;
   border-radius: 3px;
 
-  animation: block 1s infinite linear;
+  /* animation: block 1s infinite linear; */
 }
 
-@keyframes block {
+/* @keyframes block {
   0%{left: 480px;}
   100%{left: -100px;} 
-}
-
+} */
+/* 
 #startBtn{
   width: 50px;
   height: 30px;
   border-width: 0;
   border-radius: 3px;
   background-color: rgb(255, 212, 133);
-}
+} */
