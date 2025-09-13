@@ -37,21 +37,34 @@ function isCollision(dino, cactus){
 }
 
 
-const cactus = document.createElement('div');
-cactus.className = 'cactus';
+function createCactus(){
 
-const gameWidth = game.clientWidth
-cactus.style.left = gameWidth + 'px'
-game.appendChild(cactus);
-
-function move(){
-  let left = parseFloat(cactus.style.left);
-  left -= 5
-  cactus.style.left = left + 'px'
+  const cactus = document.createElement('div');
+  cactus.className = 'cactus';
   
-  if(left < -50){
-    cactus.remove();
+  const gameWidth = game.clientWidth;
+  cactus.style.left = gameWidth + 'px';
+  
+  game.appendChild(cactus);
+  
+  
+  function move(){
+    
+    let left = parseFloat(cactus.style.left);
+    cactus.style.left = left - 5 + 'px'
+    
+    if(left < -50){
+      cactus.remove()
+    }
+    
+    requestAnimationFrame(move)
   }
-  requestAnimationFrame(move);
+  move();
+  
+  const min = 500;
+  const max = 1500;
+  const delay = Math.random() * (max - min) + min;
+  
+  setTimeout(createCactus, delay);
 }
-move()
+createCactus();
