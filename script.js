@@ -2,7 +2,6 @@ let game = document.getElementById('game');
 let dino = document.getElementById('dino');
 
 let isJumping = false;
-let isGameOver = false;
 
 
 function jump(){
@@ -36,35 +35,58 @@ function isCollision(dino, cactus){
   )
 }
 
+const startBtn = document.getElementById('startBtn');
+startBtn.addEventListener('click', () => {
+  
+  isGameOver = false;
+
+  createCactus();
+  startBtn.style.display = 'none';
+})
+
+
+let isGameOver = false;
 
 function createCactus(){
 
   const cactus = document.createElement('div');
   cactus.className = 'cactus';
-  
-  const gameWidth = game.clientWidth;
-  cactus.style.left = gameWidth + 'px';
-  
+  cactus.style.left = 500 + 'px';
+
   game.appendChild(cactus);
   
-  
   function move(){
-    
+    if(isGameOver) return;
+
+    if(isCollision(dino, cactus)){
+      gameOver();
+    }
+
     let left = parseFloat(cactus.style.left);
-    cactus.style.left = left - 5 + 'px'
-    
+    left -= 8 ;
+    cactus.style.left = left + 'px';
+
     if(left < -50){
       cactus.remove()
     }
-    
     requestAnimationFrame(move)
   }
   move();
-  
+
   const min = 500;
   const max = 1500;
   const delay = Math.random() * (max - min) + min;
-  
   setTimeout(createCactus, delay);
 }
-createCactus();
+
+
+const againBtn = document.getElementById('againBtn');
+againBtn.addEventListener('click', () => {
+  location.reload();
+})
+againBtn.style.display = 'none';
+
+function gameOver(){
+  isGameOver = true;
+  againBtn.style.display = '';
+}
