@@ -80,7 +80,16 @@ function createCactus() {
 }
 
 // start first cactus
-createCactus();
+// createCactus();
+
+const startBtn = document.getElementById('startBtn');
+
+startBtn.addEventListener('click', () => {
+  if(isGameOver) return;
+  createCactus();
+  startBtn.style.display = 'none';
+  console.log('start')
+})
 
 function gameOver() {
   isGameOver = true;
