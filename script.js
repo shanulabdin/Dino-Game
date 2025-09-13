@@ -37,25 +37,24 @@ function isCollision(dino, cactus){
 }
 
 
+const gameWidth = game.clientWidth
+
 const cactus = document.createElement('div');
 cactus.className = 'cactus';
-cactus.style.left = game.clientWidth + 'px';
-
+cactus.style.left = gameWidth + 'px'
 game.appendChild(cactus);
 
-// we set this to minus the amount from the cactus in future
-const speed = 6;
+console.log(cactus.style.left)
 
-function move() {
+
+function move(){
   let left = parseFloat(cactus.style.left);
-
-  // minus the maount of speed from the left of cactus
-  left -= speed;
-
-  // set the style to cactus
+  left -= 5
   cactus.style.left = left + 'px'
   
-  // makes the animation with the frame rate, instead of every milisecond with setInterval()
-  requestAnimationFrame(move)
+  if(left < -50){
+    cactus.remove();
+  }
+  requestAnimationFrame(move);
 }
 move()
