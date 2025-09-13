@@ -1,8 +1,8 @@
 let game = document.getElementById('game');
 let dino = document.getElementById('dino');
 
+// jumping animation
 let isJumping = false;
-
 
 function jump(){
   if(isJumping || isGameOver) return;
@@ -23,6 +23,8 @@ document.addEventListener('keydown', function(){
   jump();
 })
 
+
+// collision detection
 function isCollision(dino, cactus){
   const dinoBox = dino.getBoundingClientRect();
   const cactusBox = cactus.getBoundingClientRect();
@@ -35,6 +37,8 @@ function isCollision(dino, cactus){
   )
 }
 
+
+// start button
 const startBtn = document.getElementById('startBtn');
 startBtn.addEventListener('click', () => {
   
@@ -45,6 +49,7 @@ startBtn.addEventListener('click', () => {
 })
 
 
+// create the cactuses and check if the game is over
 let isGameOver = false;
 
 function createCactus(){
@@ -55,6 +60,7 @@ function createCactus(){
 
   game.appendChild(cactus);
   
+  // cactus animation
   function move(){
     if(isGameOver) return;
 
@@ -80,12 +86,15 @@ function createCactus(){
 }
 
 
+// replay button
 const againBtn = document.getElementById('againBtn');
 againBtn.addEventListener('click', () => {
   location.reload();
 })
 againBtn.style.display = 'none';
 
+
+// game over
 function gameOver(){
   isGameOver = true;
   againBtn.style.display = '';
