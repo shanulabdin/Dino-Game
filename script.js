@@ -37,15 +37,12 @@ function isCollision(dino, cactus){
 }
 
 
-const gameWidth = game.clientWidth
-
 const cactus = document.createElement('div');
 cactus.className = 'cactus';
+
+const gameWidth = game.clientWidth
 cactus.style.left = gameWidth + 'px'
 game.appendChild(cactus);
-
-console.log(cactus.style.left)
-
 
 function move(){
   let left = parseFloat(cactus.style.left);
