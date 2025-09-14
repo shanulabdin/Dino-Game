@@ -29,22 +29,24 @@ body{
   height: 300px;
   border: none;
   background-color: #FFFFE8;
-  border-radius: 10px;
+  border-radius: 2px 20px 2px 20px;
   overflow: hidden;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5)
 }
 
 #dino{
   width: 50px;
-  height: 70px;
-  background: url('img.png') center/cover;
+  height: 60px;
+  background: url('sis.png') center/cover;
   border-radius: 3px;
   position: absolute;
   left: 80px;
-  bottom: -6px;
+  bottom: -1px;
 }
 .animate{
   animation: jump 500ms ease-out;
@@ -58,13 +60,20 @@ body{
 }
 
 .cactus{
-  width: 30px;
-  height: 55px;
-  background-color: #AACB73;
+  width: 50px;
+  height: 70px;
+  background: url('sam.png') center/cover;
   position: absolute;
-  bottom: 0;
+  bottom: -3px;
   left: 0;
   border-radius: 3px;
+  animation: wiggle 0.4s infinite;
+}
+@keyframes wiggle {
+  0%{transform: rotate(0deg);}
+  25%{transform: rotate(3deg);}
+  75%{transform: rotate(-3deg);}
+  100%{transform: rotate(0deg);}
 }
 
 button{

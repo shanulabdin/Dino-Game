@@ -8,6 +8,7 @@ const jumpSound = document.querySelector('#jumpSound');
 const dieSound = document.querySelector('#dieSound');
 
 let isMusic = true;
+
 let isJumping = false;
 let isGameOver = false;
 let cactusTimeouts = [];
@@ -24,12 +25,16 @@ function jump() {
     dino.classList.remove('animate');
     isJumping = false;
   }, 500);
-jumpSound.play();
-
+  
+  jumpSound.play();
 }
 
 document.addEventListener('click', jump);
-document.addEventListener('keydown', jump);
+document.addEventListener('keydown', (e) => {
+  if(e.code === 'Space'){
+    jump();
+  }
+});
 
 // Collision
 function isCollision(dino, cactus) {
@@ -64,8 +69,7 @@ function startGame() {
 
   startBtn.style.display = 'none';
 
-  // Restart music
-
+  
 
   score = 0;
   scoreElement.textContent = 'Score : 0';
@@ -90,7 +94,7 @@ function createCactus() {
     }
 
     let left = parseFloat(cactus.style.left);
-    left -= 10;
+    left -= 12;
     cactus.style.left = left + 'px';
 
     if (left < -50) {
@@ -104,7 +108,7 @@ function createCactus() {
   }
   move();
 
-  const min = 700, max = 1500;
+  const min = 500, max = 1500;
   const delay = Math.random() * (max - min) + min;
   const id = setTimeout(createCactus, delay);
   cactusTimeouts.push(id);
@@ -121,10 +125,20 @@ function gameOver() {
 startBtn.addEventListener('click', startGame);
 
 
+// Start game with Space key
+document.addEventListener('keydown', (e) => {
+  if(e.code === 'Space' && startBtn.style.display !== 'none'){
+    startGame();
+  }
+})
+
+
 // musicBtn
 window.addEventListener('click', () => {
   if (isMusic && music.paused) {
     music.play();
+    music.volume = 0.7;
+
   }
 }, { once: true });
 
@@ -134,9 +148,23 @@ function musicControl(){
     isMusic = false;
   } else if (!isMusic){
     music.play();
+    music.volume = 0.7;
+
     isMusic = true;
   }
 }
 musicBtn.addEventListener('click', () => {
   musicControl();
 })
+
+const volumeSlider = document.getElementById('volumeSlider');
+
+// Set the initial volume (optional, default is 1.0 or 100%)
+music.volume = 1.0;
+
+// Add an event listener to the volume slider
+volumeSlider.addEventListener('input', function() {
+    // The volume property expects a value between 0.0 and 1.0
+    music.volume = this.value / 100;
+});
+
