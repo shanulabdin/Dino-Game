@@ -1,101 +1,128 @@
 let game = document.getElementById('game');
 let dino = document.getElementById('dino');
+let startBtn = document.getElementById('startBtn');
+const music = document.getElementById('bgMusic');
 
-// jumping animation
 let isJumping = false;
+let isGameOver = false;
+let cactusTimeouts = [];
 
-function jump(){
-  if(isJumping || isGameOver) return;
-  
+// Jumping
+function jump() {
+  if (isJumping || isGameOver) return;
+
   isJumping = true;
   dino.classList.add('animate');
 
-  setTimeout(function(){
+  setTimeout(() => {
     dino.classList.remove('animate');
     isJumping = false;
-  }, 500)
+  }, 400);
 }
 
-document.addEventListener('click', function(){
-  jump();
-})
-document.addEventListener('keydown', function(){
-  jump();
-})
+document.addEventListener('click', jump);
+document.addEventListener('keydown', jump);
 
-
-// collision detection
-function isCollision(dino, cactus){
+// Collision
+function isCollision(dino, cactus) {
   const dinoBox = dino.getBoundingClientRect();
   const cactusBox = cactus.getBoundingClientRect();
 
   return !(
     dinoBox.top > cactusBox.bottom ||
     dinoBox.bottom < cactusBox.top ||
-    dinoBox.right < cactusBox.left || 
+    dinoBox.right < cactusBox.left ||
     dinoBox.left > cactusBox.right
-  )
+  );
 }
 
 
-// start button
-const startBtn = document.getElementById('startBtn');
-startBtn.addEventListener('click', () => {
-  
+const scoreElement = document.querySelector('.score');
+
+let score = 0;
+scoreElement.textContent = 'Score : 0';
+
+
+// Start Game
+function startGame() {
   isGameOver = false;
 
-  createCactus();
+  // Clear old timeouts
+  cactusTimeouts.forEach(id => clearTimeout(id));
+  cactusTimeouts = [];
+
+  // Remove old cactuses
+  document.querySelectorAll('.cactus').forEach(c => c.remove());
+
   startBtn.style.display = 'none';
-})
+
+  // Restart music
+  music.loop = true;
+  music.play();
+
+  score = 0;
+  scoreElement.textContent = 'Score : 0';
+  createCactus();
+}
 
 
-// create the cactuses and check if the game is over
-let isGameOver = false;
-
-function createCactus(){
+// Create cactus
+function createCactus() {
+  if (isGameOver) return;
 
   const cactus = document.createElement('div');
   cactus.className = 'cactus';
-  cactus.style.left = 500 + 'px';
-
+  cactus.style.left = '700px';
   game.appendChild(cactus);
-  
-  // cactus animation
-  function move(){
-    if(isGameOver) return;
 
-    if(isCollision(dino, cactus)){
+  function move() {
+    if (isGameOver) return;
+
+    if (isCollision(dino, cactus)) {
       gameOver();
     }
 
     let left = parseFloat(cactus.style.left);
-    left -= 8 ;
+    left -= 10;
     cactus.style.left = left + 'px';
 
-    if(left < -50){
-      cactus.remove()
+    if (left < -50) {
+      cactus.remove();
+      score++;
+      scoreElement.textContent = 'Score : ' + score;
+      console.log(score);
+    } else {
+      requestAnimationFrame(move);
     }
-    requestAnimationFrame(move)
   }
   move();
 
-  const min = 500;
-  const max = 1500;
+  const min = 500, max = 1500;
   const delay = Math.random() * (max - min) + min;
-  setTimeout(createCactus, delay);
+  const id = setTimeout(createCactus, delay);
+  cactusTimeouts.push(id);
 }
 
-
-// replay button
-const againBtn = document.getElementById('againBtn');
-againBtn.addEventListener('click', () => {
-  location.reload();
-})
-againBtn.style.display = 'none';
-
-
-// game over
-function gameOver(){
+// Game over
+function gameOver() {
   isGameOver = true;
-  againBtn.style.display = '';
+  startBtn.style.display = '';
 }
+
+// Start button
+startBtn.addEventListener('click', startGame);
+
+
+// musicBtn
+let isMusic = true;
+const musicBtn = document.getElementById('musicBtn');
+musicBtn.addEventListener('click', () => {
+  if(isMusic){
+    music.pause();
+    isMusic = false;
+  } else if (!isMusic){
+    music.play();
+    isMusic = true;
+  }
+})
+

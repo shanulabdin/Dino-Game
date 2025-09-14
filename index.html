@@ -6,18 +6,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Belleza&display=swap" rel="stylesheet">
-  
+
   <link rel="stylesheet" href="style.css">
   <title>Dino Game</title>
 </head>
 <body>
 
+  <div class="score"></div>
+
+  <nav class="nav">
+    <button id="musicBtn">♫</button>
+  </nav>
+
+
   <div id="game">
     <div id="dino"></div>
     
-    <button id="startBtn">Play</button>
-    <button id="againBtn">Try Again</button>
+    <button id="startBtn">▶</button>
+    <audio id="bgMusic" src="bgMusic.mpeg"></audio>
   </div>
+    
   
   <script src="script.js"></script>
 </body>
