@@ -73,6 +73,8 @@ function startGame() {
 
   score = 0;
   scoreElement.textContent = 'Score : 0';
+  music.play();
+  music.volume = 0.5;
   createCactus();
 }
 
@@ -137,7 +139,7 @@ document.addEventListener('keydown', (e) => {
 window.addEventListener('click', () => {
   if (isMusic && music.paused) {
     music.play();
-    music.volume = 0.7;
+    music.volume = 0.5;
 
   }
 }, { once: true });
@@ -148,7 +150,7 @@ function musicControl(){
     isMusic = false;
   } else if (!isMusic){
     music.play();
-    music.volume = 0.7;
+    music.volume = 0.5;
 
     isMusic = true;
   }
@@ -157,14 +159,6 @@ musicBtn.addEventListener('click', () => {
   musicControl();
 })
 
-const volumeSlider = document.getElementById('volumeSlider');
 
-// Set the initial volume (optional, default is 1.0 or 100%)
-music.volume = 1.0;
-
-// Add an event listener to the volume slider
-volumeSlider.addEventListener('input', function() {
-    // The volume property expects a value between 0.0 and 1.0
-    music.volume = this.value / 100;
-});
+music.volume = 0.5;
 
