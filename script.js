@@ -13,7 +13,7 @@ function jump(){
   setTimeout(function(){
     dino.classList.remove('animate');
     isJumping = false;
-  }, 300)
+  }, 500)
 }
 
 document.addEventListener('click', function(){

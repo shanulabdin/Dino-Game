@@ -2,10 +2,14 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Belleza", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: #FFFFE8;
 }
 
 body{
-  background-color: gray;
+  background-color: #FFD4D4;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +19,9 @@ body{
 #game{
   width: 500px;
   height: 200px;
-  border: 1px solid black;
+  border: none;
+  background-color: #FFFFE8;
+  border-radius: 10px;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -27,35 +33,35 @@ body{
   width: 20px;
   height: 50px;
   background-color: lightpink;
+  border-radius: 3px;
   position: absolute;
   left: 50px;
   bottom: 0px;
 }
 .animate{
-  animation: jump 300ms ease; 
+  animation: jump 500ms ease-out; 
 }
 @keyframes jump{
   0%{bottom: 0;}
-  30%{bottom: 100px}
-  70%{bottom: 100px}
+  40%{bottom: 80px}
+  55%{bottom: 80px}
   100%{bottom: 0}
 }
 
 .cactus{
   width: 20px;
   height: 40px;
-  background-color: lightgreen;
+  background-color: #AACB73;
   position: absolute;
   bottom: 0;
   left: 0;
   border-radius: 3px;
 }
 
-
 button{
   padding: 8px 16px;
   border-width: 0;
   border-radius: 3px;
-  background-color: rgb(255, 212, 133);
+  background-color: #AACB73;
   cursor: pointer;
 }
