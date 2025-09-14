@@ -42,7 +42,7 @@ body{
 #dino{
   width: 50px;
   height: 60px;
-  background: url('sis.png') center/cover;
+  background: url('images/sis.png') center/cover;
   border-radius: 3px;
   position: absolute;
   left: 80px;
@@ -62,7 +62,7 @@ body{
 .cactus{
   width: 50px;
   height: 70px;
-  background: url('sam.png') center/cover;
+  background: url('images/sam.png') center/cover;
   position: absolute;
   bottom: -3px;
   left: 0;
@@ -110,5 +110,19 @@ button:hover{
   color: #FFFFE8;
   border-radius: 2px 10px 2px 10px;
   background-color: #AACB73;
-  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5)
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
+}
+
+.messageContainer{
+  background-color: #AACB73;
+  padding: 10px 20px;
+  border-radius: 2px 10px 2px 10px;
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
+
+  margin-top: 30px;
+
+}
+.message{
+  color: #FFFFE8;
+  font-size: 50px;
 }

@@ -7,7 +7,8 @@ const musicBtn = document.getElementById('musicBtn');
 const jumpSound = document.querySelector('#jumpSound');
 const dieSound = document.querySelector('#dieSound');
 
-let isMusic = true;
+// let isMusic = true;
+music.volume = 0.5;
 
 let isJumping = false;
 let isGameOver = false;
@@ -78,6 +79,12 @@ function startGame() {
   createCactus();
 }
 
+let messageShow = false;
+
+let messageContainer = document.querySelector('.messageContainer');
+let message = document.querySelector('.message');
+
+
 
 // Create cactus
 function createCactus() {
@@ -87,6 +94,31 @@ function createCactus() {
   cactus.className = 'cactus';
   cactus.style.left = '700px';
   game.appendChild(cactus);
+
+
+    if(score >= 0){
+      message.textContent = 'Welcome to the World';
+      dino.style.background = `url('images/sis.png') center/cover`;
+      cactus.style.background = `url('images/feeder.png') center/cover`;
+      console.log('hello')
+    } 
+    if(score > 5){
+      message.textContent = 'You are already 5 years old';
+      dino.style.background = `url('images/sis.png') center/cover`;
+      cactus.style.background = `url('images/img.png') center/cover`;
+    } 
+    if(score > 10){
+      message.textContent = 'You are doing great';
+    } 
+    if(score > 15){
+      message.textContent = 'You are already 5 years old';
+    } 
+    if(score > 20){
+      message.textContent = 'You are doing great';
+    } 
+    if(score > 25){
+      message.textContent = 'You are doing great';
+    } 
 
   function move() {
     if (isGameOver) return;
@@ -103,7 +135,9 @@ function createCactus() {
       cactus.remove();
       score++;
       scoreElement.textContent = 'Score : ' + score;
-      console.log(score);
+
+    
+
     } else {
       requestAnimationFrame(move);
     }
@@ -159,6 +193,4 @@ musicBtn.addEventListener('click', () => {
   musicControl();
 })
 
-
-music.volume = 0.5;
 
