@@ -4,7 +4,8 @@ let startBtn = document.getElementById('startBtn');
 const music = document.getElementById('bgMusic');
 const musicBtn = document.getElementById('musicBtn');
 
-
+const jumpSound = document.querySelector('#jumpSound');
+const dieSound = document.querySelector('#dieSound');
 
 let isMusic = true;
 let isJumping = false;
@@ -23,6 +24,8 @@ function jump() {
     dino.classList.remove('animate');
     isJumping = false;
   }, 500);
+jumpSound.play();
+
 }
 
 document.addEventListener('click', jump);
@@ -111,6 +114,7 @@ function createCactus() {
 function gameOver() {
   isGameOver = true;
   startBtn.style.display = '';
+  dieSound.play();
 }
 
 // Start button
