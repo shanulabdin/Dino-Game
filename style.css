@@ -47,7 +47,7 @@ body{
   bottom: -6px;
 }
 .animate{
-  animation: jump 400ms ease-out; 
+  animation: jump 500ms ease-out; 
 }
 @keyframes jump{
   0%{bottom: 0;}

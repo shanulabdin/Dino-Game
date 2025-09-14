@@ -2,10 +2,15 @@ let game = document.getElementById('game');
 let dino = document.getElementById('dino');
 let startBtn = document.getElementById('startBtn');
 const music = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
 
+
+
+let isMusic = true;
 let isJumping = false;
 let isGameOver = false;
 let cactusTimeouts = [];
+
 
 // Jumping
 function jump() {
@@ -17,7 +22,7 @@ function jump() {
   setTimeout(() => {
     dino.classList.remove('animate');
     isJumping = false;
-  }, 400);
+  }, 500);
 }
 
 document.addEventListener('click', jump);
@@ -57,8 +62,7 @@ function startGame() {
   startBtn.style.display = 'none';
 
   // Restart music
-  music.loop = true;
-  music.play();
+
 
   score = 0;
   scoreElement.textContent = 'Score : 0';
@@ -97,7 +101,7 @@ function createCactus() {
   }
   move();
 
-  const min = 500, max = 1500;
+  const min = 700, max = 1500;
   const delay = Math.random() * (max - min) + min;
   const id = setTimeout(createCactus, delay);
   cactusTimeouts.push(id);
@@ -114,9 +118,13 @@ startBtn.addEventListener('click', startGame);
 
 
 // musicBtn
-let isMusic = true;
-const musicBtn = document.getElementById('musicBtn');
-musicBtn.addEventListener('click', () => {
+window.addEventListener('click', () => {
+  if (isMusic && music.paused) {
+    music.play();
+  }
+}, { once: true });
+
+function musicControl(){
   if(isMusic){
     music.pause();
     isMusic = false;
@@ -124,5 +132,7 @@ musicBtn.addEventListener('click', () => {
     music.play();
     isMusic = true;
   }
+}
+musicBtn.addEventListener('click', () => {
+  musicControl();
 })
-
