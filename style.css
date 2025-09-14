@@ -40,9 +40,9 @@ body{
 }
 
 #dino{
-  width: 50px;
+  width: 57px;
   height: 60px;
-  background: url('images/sis.png') center/cover;
+  background: url('images/fam.png') center/cover;
   border-radius: 3px;
   position: absolute;
   left: 80px;
