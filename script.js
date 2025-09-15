@@ -24,7 +24,7 @@ function jump() {
   setTimeout(() => {
     dino.classList.remove('animate');
     isJumping = false;
-  }, 500);
+  }, 800);
   
   jumpSound.play();
 }
@@ -188,7 +188,7 @@ let randomImg = imgs[Math.round(Math.random() * imgs.length)]
     }
 
     let left = parseFloat(cactus.style.left);
-    left -= 12;
+    left -= 8;
     cactus.style.left = left + 'px';
 
     if (left < -50) {
@@ -201,7 +201,7 @@ let randomImg = imgs[Math.round(Math.random() * imgs.length)]
   }
   move();
 
-  const min = 500, max = 1500;
+  const min = 1000, max = 2000;
   const delay = Math.random() * (max - min) + min;
   const id = setTimeout(createCactus, delay);
   cactusTimeouts.push(id);

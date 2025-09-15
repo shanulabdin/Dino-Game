@@ -43,13 +43,13 @@ body{
   bottom: -1px;
 }
 .animate{
-  animation: jump 500ms ease-out;
+  animation: jump 800ms ease-in-out;
   
 }
 @keyframes jump{
   0%{bottom: 0;}
-  40%{bottom: 120px}
-  55%{bottom: 120px}
+  35%{bottom: 120px}
+  65%{bottom: 120px}
   100%{bottom: 0}
 }
 
