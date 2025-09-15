@@ -17,11 +17,15 @@
 
   <nav class="nav">
     <button id="musicBtn" tabindex="-1">♫</button>
-    <audio id="bgMusic" src="sounds/bgMusic.mpeg" loop></audio>
-
-
-    <audio id="jumpSound" src="sounds/huh.mp4"></audio>
-    <audio id="dieSound" src="sounds/ooh.mp4"></audio>
+    <audio id="bgMusic" loop>
+      <source src="sounds/bgMusic.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="jumpSound">
+      <source src="sounds/huh.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="dieSound">
+      <source src="sounds/ooh.mp3" type="audio/mpeg">
+    </audio>
   </nav>
  
 

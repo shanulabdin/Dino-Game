@@ -83,7 +83,11 @@ let messageContainer = document.querySelector('.messageContainer');
 let message = document.querySelector('.message');
 
 
-
+let imgs = [
+  `url('images/mom.png') center/cover`,
+  `url('images/pop.png') center/cover`,
+  `url('images/sam.png') center/cover`
+]
 // Create cactus
 function createCactus() {
   if (isGameOver) return;
@@ -94,69 +98,71 @@ function createCactus() {
   game.appendChild(cactus);
   
 
+let randomImg = imgs[Math.round(Math.random() * imgs.length)]
 
-    if(score > 0){
-      message.textContent = 'Hiiiii, Happy BirthDay!!';
-      dino.style.background = `url('images/fam1.png') center/cover`;
-      dino.style.width = '65px';
-      dino.style.height = '60px';
+  if(score > 0){
+    message.textContent = 'Hiiiii, Happy Birthday!!';
+    dino.style.background = `url('images/fam1.png') center/cover`;
+    dino.style.width = '65px';
+    dino.style.height = '60px';
 
-      cactus.style.background = `url('images/mom.png') center/cover`;
-      cactus.style.width = '60px';
-      cactus.style.height = '70px';
-      
-    } 
-    if(score >= 5){
-      message.textContent = 'Warning! obstacle after 12 is SCARY!';
-    } 
-    if(score >= 12){
-      message.textContent = 'Dont worry, it`ll be over in 10 years.';
-      dino.style.background = `url('images/fam2.png') center/cover`;
-      dino.style.width = '55px';
-      dino.style.height = '60px';
-      
-      cactus.style.background = `url('images/pop.png') center/cover`;
-      // cactus.style.width = '50px';
-      // cactus.style.height = '70px';
-    }
-    if(score >= 19){
-      message.textContent = 'You`ll choose your own obstacle next';
-    } 
-    if(score >= 22){
-      message.textContent = 'Haha, just kidding';
-      dino.style.background = `url('images/fam.png') center/cover`;
-      dino.style.width = '55px';
-      dino.style.height = '60px';
+    cactus.style.background = `url('images/mom.png') center/cover`;
+    cactus.style.width = '60px';
+    cactus.style.height = '70px';
+  } 
+  if(score >= 5){
+    message.textContent = 'Warning! The obstacle after 12 is SCARY!';
+  } 
+  if(score >= 12){
+    message.textContent = 'Don’t worry, it’ll be over in 10 years.';
+    dino.style.background = `url('images/fam2.png') center/cover`;
+    dino.style.width = '55px';
+    dino.style.height = '60px';
+    
+    cactus.style.background = `url('images/pop.png') center/cover`;
+    // cactus.style.width = '50px';
+    // cactus.style.height = '70px';
+  }
+  if(score >= 19){
+    message.textContent = 'You’ll choose your own obstacle next.';
+  } 
+  if(score >= 22){
+    message.textContent = 'Haha, just kidding!';
+    dino.style.background = `url('images/fam.png') center/cover`;
+    dino.style.width = '55px';
+    dino.style.height = '60px';
 
-      cactus.style.background = `url('images/sam.png') center/cover`;
-      cactus.style.width = '60px';
-      cactus.style.height = '70px';
-      cactus.style.bottom = '-4px';
-    } 
-    if(score > 27){
-      message.textContent = 'Challenge! reach 100 for a surprise';
-    } 
-    if(score > 37){
-      message.textContent = 'Keep going!';
-    } 
-    if(score > 50){
-      message.textContent = 'You`re doing great!';
-    } 
-    if(score > 60){
-      message.textContent = 'Amazing!!!';
-    } 
-    if(score > 70){
-      message.textContent = 'You still Alive?';
-    } 
-    if(score > 80){
-      message.textContent = 'YOU ARE A LEGEND!';
-    } 
-    if(score > 90){
-      message.textContent = 'Just 10 more for a century';
-    } 
-    if(score > 100){
-      message.textContent = 'Keep over-comming all the obstacles in your life like this, you are amazing, Happy Birthday!';
-    } 
+    cactus.style.background = `url('images/sam.png') center/cover`;
+    cactus.style.width = '60px';
+    cactus.style.height = '70px';
+    cactus.style.bottom = '-4px';
+  } 
+  if(score > 27){
+    message.textContent = 'Happy 27th Birthday!';
+    cactus.style.background = randomImg;
+  } 
+  if(score > 40){
+    message.textContent = 'Keep going!';
+  } 
+  if(score > 50){
+    message.textContent = 'You’re doing great!';
+  } 
+  if(score > 60){
+    message.textContent = 'Amazing!!!';
+  } 
+  if(score > 70){
+    message.textContent = 'You’re still alive?';
+  } 
+  if(score > 80){
+    message.textContent = 'YOU ARE A LEGEND!';
+  } 
+  if(score > 90){
+    message.textContent = 'Just 10 more for a century.';
+  } 
+  if(score > 100){
+    message.textContent = 'Keep overcoming all the obstacles in your life like this. You are amazing—Happy Birthday!';
+  } 
+
 
   function move() {
     if (isGameOver) return;
