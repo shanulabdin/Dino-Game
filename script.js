@@ -101,7 +101,7 @@ function createCactus() {
 let randomImg = imgs[Math.round(Math.random() * imgs.length)]
 
   if(score > 0){
-    message.textContent = 'Hiiiii, Happy Birthday!!';
+    message.textContent = 'Your journey begins, Happy birthday!!';
     dino.style.background = `url('images/fam1.png') center/cover`;
     dino.style.width = '65px';
     dino.style.height = '60px';
@@ -111,23 +111,27 @@ let randomImg = imgs[Math.round(Math.random() * imgs.length)]
     cactus.style.height = '70px';
   } 
   if(score >= 5){
-    message.textContent = 'Warning! The obstacle after 12 is SCARY!';
+    message.textContent = 'Five years of pure cuteness already';
+  } 
+  if(score >= 8){
+    message.textContent = 'Warning! obstacle after 12 is SCARY!';
   } 
   if(score >= 12){
-    message.textContent = 'Don’t worry, it’ll be over in 10 years.';
+    message.textContent = 'The teen years!';
     dino.style.background = `url('images/fam2.png') center/cover`;
     dino.style.width = '55px';
     dino.style.height = '60px';
     
     cactus.style.background = `url('images/pop.png') center/cover`;
-    // cactus.style.width = '50px';
-    // cactus.style.height = '70px';
   }
+  if(score >= 17){
+    message.textContent = 'Don’t worry, it’ll be over in 5 years.';
+  } 
   if(score >= 19){
-    message.textContent = 'You’ll choose your own obstacle next.';
+    message.textContent = 'Almost grown.';
   } 
   if(score >= 22){
-    message.textContent = 'Haha, just kidding!';
+    message.textContent = 'Adulthood unlocked!';
     dino.style.background = `url('images/fam.png') center/cover`;
     dino.style.width = '55px';
     dino.style.height = '60px';
@@ -141,14 +145,23 @@ let randomImg = imgs[Math.round(Math.random() * imgs.length)]
     message.textContent = 'Happy 27th Birthday!';
     cactus.style.background = randomImg;
   } 
+  if(score > 28){
+    message.textContent = 'Wishing you love and laughter';
+  } 
+  if(score > 30){
+    message.textContent = 'Challenge! Cross 100';
+  } 
   if(score > 40){
-    message.textContent = 'Keep going!';
+    message.textContent = 'keep going! you are doing great';
   } 
   if(score > 50){
-    message.textContent = 'You’re doing great!';
+    message.textContent = 'Half a century? Amazing';
   } 
   if(score > 60){
-    message.textContent = 'Amazing!!!';
+    message.textContent = 'Sixty?! Don’t worry,';
+  } 
+  if(score > 65){
+    message.textContent = 'you still look 21 from a distance';
   } 
   if(score > 70){
     message.textContent = 'You’re still alive?';
@@ -157,11 +170,14 @@ let randomImg = imgs[Math.round(Math.random() * imgs.length)]
     message.textContent = 'YOU ARE A LEGEND!';
   } 
   if(score > 90){
-    message.textContent = 'Just 10 more for a century.';
+    message.textContent = 'Just 10 more for a century';
   } 
   if(score > 100){
-    message.textContent = 'Keep overcoming all the obstacles in your life like this. You are amazing—Happy Birthday!';
-  } 
+    message.textContent = 'A whole century of awesomeness, keep overcoming every obstacle like this, you are amazing! Happy birthday!';
+  }
+  if(score > 120){
+    message.textContent = '"Immortal Mode"';
+  }
 
 
   function move() {
@@ -179,7 +195,6 @@ let randomImg = imgs[Math.round(Math.random() * imgs.length)]
       cactus.remove();
       score++;
       scoreElement.textContent = 'Year : ' + score;
-      console.log(score);
     } else {
       requestAnimationFrame(move);
     }
