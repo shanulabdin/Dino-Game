@@ -53,7 +53,7 @@ function isCollision(dino, cactus) {
 const scoreElement = document.querySelector('.score');
 
 let score = 0;
-scoreElement.textContent = 'Score : 0';
+scoreElement.textContent = 'Year : 0';
 
 
 // Start Game
@@ -72,10 +72,16 @@ function startGame() {
   
 
   score = 0;
-  scoreElement.textContent = 'Score : 0';
+  scoreElement.textContent = 'Year : 0';
 
   createCactus();
 }
+
+let messageShow = false;
+
+let messageContainer = document.querySelector('.messageContainer');
+let message = document.querySelector('.message');
+
 
 
 // Create cactus
@@ -86,6 +92,44 @@ function createCactus() {
   cactus.className = 'cactus';
   cactus.style.left = '700px';
   game.appendChild(cactus);
+  
+
+
+    if(score >= 0){
+      message.textContent = 'Happy Birthday';
+      dino.style.background = `url('images/fam1.png') center/cover`;
+      dino.style.width = '65px';
+      dino.style.height = '60px';
+
+      cactus.style.background = `url('images/mom.png') center/cover`;
+      cactus.style.width = '60px';
+      cactus.style.height = '70px';
+      
+    } 
+    if(score >= 10){
+      message.textContent = 'Happy Birthday';
+      dino.style.background = `url('images/fam2.png') center/cover`;
+      dino.style.width = '55px';
+      dino.style.height = '60px';
+
+      cactus.style.background = `url('images/pop.png') center/cover`;
+      // cactus.style.width = '50px';
+      // cactus.style.height = '70px';
+    } 
+    if(score >= 20){
+      message.textContent = 'Happy Birthday';
+      dino.style.background = `url('images/fam.png') center/cover`;
+      dino.style.width = '55px';
+      dino.style.height = '60px';
+
+      cactus.style.background = `url('images/sam.png') center/cover`;
+      cactus.style.width = '60px';
+      cactus.style.height = '70px';
+      cactus.style.bottom = '-4px';
+    } 
+    if(score > 25){
+      message.textContent = 'Happy Birthday';
+    } 
 
   function move() {
     if (isGameOver) return;
@@ -101,7 +145,7 @@ function createCactus() {
     if (left < -50) {
       cactus.remove();
       score++;
-      scoreElement.textContent = 'Score : ' + score;
+      scoreElement.textContent = 'Year : ' + score;
       console.log(score);
     } else {
       requestAnimationFrame(move);

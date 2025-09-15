@@ -40,9 +40,9 @@ body{
 }
 
 #dino{
-  width: 57px;
+  width: 65px;
   height: 60px;
-  background: url('images/fam.png') center/cover;
+  background: url('images/fam1.png') center/cover;
   border-radius: 3px;
   position: absolute;
   left: 80px;
@@ -60,11 +60,11 @@ body{
 }
 
 .cactus{
-  width: 50px;
+  width: 60px;
   height: 70px;
-  background: url('images/sam.png') center/cover;
+  background: url('images/mom.png') center/cover;
   position: absolute;
-  bottom: -3px;
+  bottom: -8px;
   left: 0;
   border-radius: 3px;
   animation: wiggle 0.4s infinite;
